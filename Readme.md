@@ -42,14 +42,43 @@ This document describes the configuration steps required to enable **Google Sing
 
 In your self-hosted Sentry repository directory, edit the `sentry/config.yml` file to enable Google as an authentication provider.
 
-```yaml
+```
+yaml
     auth.providers:
-      - google```
+      - google
+```
 
 
 📄 Update sentry.conf.py
 
 Open sentry/sentry.conf.py and add or update the following configuration:
+```
+from sentry.conf.server import *
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-client-id>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-client-secret>'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email']
+SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['yourdomain.com']  # Optional
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
+    *AUTHENTICATION_BACKENDS,
+)
 
+```
+
+##3️⃣ Rebuild and Restart Sentry
+
+```
+# Navigate to your self-hosted sentry directory
+cd /path/to/sentry-self-hosted
+
+# Stop running containers
+docker-compose down
+
+# Build containers to pick up config changes
+docker-compose build
+
+# Start containers in detached mode
+docker-compose up -d
+```
