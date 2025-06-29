@@ -24,4 +24,5 @@ This document outlines the step-by-step process to enable **Google Single Sign-O
 4. Click **Create Credentials → OAuth Client ID**.
 5. Select **Web application**.
 6. Add the following redirect URI:
+    "https://sentey.getnitro.co.in/auth/sso/"
 
