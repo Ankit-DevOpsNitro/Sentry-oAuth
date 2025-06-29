@@ -42,10 +42,10 @@ Open sentry/sentry.conf.py and add or update the following configurations:
 
 from sentry.conf.server import *
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-client-id>'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-client-secret>'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email']
-SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['yourdomain.com']  # Optional
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-client-id>'.
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-client-secret>'.
+SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email'].
+SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['yourdomain.com'] . # Optional
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
