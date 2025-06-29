@@ -27,7 +27,7 @@ This document outlines the step-by-step process to enable **Google Single Sign-O
     "https://sentey.getnitro.co.in/auth/sso/"
 7.Save the generated Client ID and Client Secret — you’ll need them in later steps.
 
-###Configure Sentry for Google SSO
+### Configure Sentry for Google SSO
 Sentry uses the "social-auth-app-django" backend internally for social logins. Configuration is done via "config.yml" and "sentry.conf.py".
 
 📄 Update config.yml
@@ -52,7 +52,7 @@ AUTHENTICATION_BACKENDS = (
     *AUTHENTICATION_BACKENDS,
 )
 
-###3️⃣ Rebuild and Restart Sentry
+### 3️⃣ Rebuild and Restart Sentry
 
 After applying the configuration changes:
 
