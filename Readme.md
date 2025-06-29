@@ -30,43 +30,26 @@ This document outlines the step-by-step process to enable **Google Single Sign-O
 ### Configure Sentry for Google SSO
 Sentry uses the "social-auth-app-django" backend internally for social logins. Configuration is done via "config.yml" and "sentry.conf.py".
 
-📄 Update config.yml
+# 📄 Enabling Google SSO in Self-Hosted Sentry — Configuration Guide
 
-In your self-hosted Sentry repository directory, edit the sentry/config.yml file:
+This document describes the configuration steps required to enable **Google Single Sign-On (SSO)** in a **self-hosted Sentry instance deployed via Docker Compose**.
+
+---
+
+## 📌 Configuration Steps
+
+### 📄 Update `config.yml`
+
+In your self-hosted Sentry repository directory, edit the `sentry/config.yml` file to enable Google as an authentication provider.
+
+```yaml
     auth.providers:
-              - google
+      - google```
+
 
 📄 Update sentry.conf.py
 
-Open sentry/sentry.conf.py and add or update the following configurations:
-
-from sentry.conf.server import *
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '<your-client-id>'.
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '<your-client-secret>'.
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = ['email'].
-SOCIAL_AUTH_GOOGLE_OAUTH2_WHITELISTED_DOMAINS = ['yourdomain.com'] . # Optional
-
-AUTHENTICATION_BACKENDS = (
-    'social_core.backends.google.GoogleOAuth2',
-    *AUTHENTICATION_BACKENDS,
-)
-
-### 3️⃣ Rebuild and Restart Sentry
-
-After applying the configuration changes:
-
-# Navigate to your self-hosted sentry directory
-cd /path/to/sentry-self-hosted
-
-# Stop containers
-docker-compose down
-
-# Build containers to pick up config changes
-docker-compose build
-
-# Start containers in detached mode
-docker-compose up -d
+Open sentry/sentry.conf.py and add or update the following configuration:
 
 
 
